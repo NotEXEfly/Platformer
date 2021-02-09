@@ -1,18 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private Stats _stats;
+    [SerializeField]
+    private Components _components;
+
+    private Utilities _utilities;
+    private Actions _actions;
+    public Components Components { get => _components; }
+    public Stats Stats { get => _stats; }
+    public Actions Actions { get => _actions; }
+    public Utilities Utilities { get => _utilities; }
+
+
+    private void Start()
     {
-        
+        _utilities = new Utilities(this);
+        _actions = new Actions(this);
+
+        AnyStateAnimation[] animations = new AnyStateAnimation[]
+        {
+            new AnyStateAnimation(RIG.BODY, "Idle", "Attack"),
+            new AnyStateAnimation(RIG.BODY, "Run", "Attack", "Jump"),
+            new AnyStateAnimation(RIG.BODY, "Jump"),
+            new AnyStateAnimation(RIG.BODY, "Fall"),
+            new AnyStateAnimation(RIG.BODY, "Attack"),
+        };
+        _components.Animator.AddAnimations(animations);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
+    {   
+        _utilities.HandleInput();
+        _actions.CheckMovementState();
+        _actions.PlayMovementAnimations();
+    }
+
+    private void FixedUpdate()
     {
-        
+        _actions.Move();
     }
 }
