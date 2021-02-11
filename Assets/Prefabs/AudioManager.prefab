@@ -43,4 +43,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f70df196b440444a485fdbc8c870c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: Jump
+    clip: {fileID: 8300000, guid: 2bc9afcce28fb2f4caab1174b467ff28, type: 3}
+    volume: 0.367
+    pitch: 1.68
+    loop: 0
+    source: {fileID: 0}
+  - name: test
+    clip: {fileID: 8300000, guid: d513e4a56bd16ed43a21e5ebea49f946, type: 3}
+    volume: 0.133
+    pitch: 0.86
+    loop: 0
+    source: {fileID: 0}
+  - name: ButtonHover
+    clip: {fileID: 8300000, guid: 88fd2216ff96af44c939564570d071d8, type: 3}
+    volume: 0.5
+    pitch: 0.86
+    loop: 0
+    source: {fileID: 0}

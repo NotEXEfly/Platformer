@@ -19,7 +19,11 @@ public class LevelLoader : MonoBehaviour
     {
         int sceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         StartCoroutine(LoadLevel(sceneIndex));
+    }
 
+    public void LoadMenu()
+    {
+        StartCoroutine(LoadLevel(0));
     }
 
     private IEnumerator LoadLevel(int sceneIndex)

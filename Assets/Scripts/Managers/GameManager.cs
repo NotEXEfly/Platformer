@@ -1,10 +1,23 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public enum GameState
+{ 
+    Play,
+    Pause,
+    Dead,
+}
 
 public class GameManager : MonoBehaviour
 {
-    // todo
+    public GameState Game { get => _game; }
+
     public static GameManager instance;
 
+
+    float playTimer = 0f;
+    private GameState _game;
+    
     private void Awake()
     {
         if (instance == null)
@@ -19,22 +32,28 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        FindObjectOfType<LevelLoader>().LoadNextScene();
+        _game = GameState.Play;
+         
         Debug.Log("StartGame");
         // Start timers;
     }
 
-    public void EndGame()
+    public void OnPlayerDeath()
     {
-        Debug.Log("GameOver");
+        FindObjectOfType<LevelLoader>().LoadMenu();
+        _game = GameState.Dead;
     }
 
-    public void Finish()
+    public void OnPlayerWin()
     {
+        _game = GameState.Pause;
         Debug.Log("Finish");
     }
 
     public void Restart()
     {
+        
         Debug.Log("Restart");
     }
 }

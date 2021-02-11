@@ -11,7 +11,6 @@ public class JumpCommand : Command
 
     public override void GetKeyDown()
     {
-        //FindObjectOfType<AudioManager>().Play("JumpSound");
         _player.Actions.Jump();
     }
 }

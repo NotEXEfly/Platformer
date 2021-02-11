@@ -35,11 +35,14 @@ public class Actions
             _player.Components.RigitBody.velocity = new Vector2(_player.Components.RigitBody.velocity.x, 0);
             _player.Components.RigitBody.AddForce(new Vector2(0, _player.Stats.JumpForce), ForceMode2D.Impulse);
             _player.Components.Animator.TryPlayAnimation("Jump");
+
+            AudioManager.instance.Play("Jump");
         }
     }
 
     public void Attack()
     {
+        AudioManager.instance.Play("test");
         _player.Components.Animator.TryPlayAnimation("Attack");
     }
 
