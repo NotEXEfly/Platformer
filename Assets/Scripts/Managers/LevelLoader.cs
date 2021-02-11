@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -26,6 +27,11 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(LoadLevel(0));
     }
 
+    public void RestartScene()
+    {
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
+    }
+
     private IEnumerator LoadLevel(int sceneIndex)
     {
         if (sceneIndex < 0) yield break;
@@ -42,4 +48,6 @@ public class LevelLoader : MonoBehaviour
         
         SceneManager.LoadScene(sceneIndex);
     }
+
+    
 }

@@ -1,11 +1,11 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public enum GameState
 { 
     Play,
     Pause,
     Dead,
+    Menu
 }
 
 public class GameManager : MonoBehaviour
@@ -39,21 +39,33 @@ public class GameManager : MonoBehaviour
         // Start timers;
     }
 
-    public void OnPlayerDeath()
+    public void Lose()
     {
-        FindObjectOfType<LevelLoader>().LoadMenu();
+        AudioManager.instance.Play("Death");
         _game = GameState.Dead;
+        Restart();
+        // lose screen
     }
 
-    public void OnPlayerWin()
+    public void Win()
     {
         _game = GameState.Pause;
-        Debug.Log("Finish");
+        Debug.Log("Win");
     }
 
     public void Restart()
     {
-        
         Debug.Log("Restart");
+
+        FindObjectOfType<LevelLoader>().RestartScene();
+    }
+
+    public void ExitGame()
+    {
+        _game = GameState.Dead;
+        
+        Debug.Log("Menu");
+
+        FindObjectOfType<LevelLoader>().LoadMenu();
     }
 }
