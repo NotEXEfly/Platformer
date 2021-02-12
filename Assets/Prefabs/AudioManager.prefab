@@ -43,34 +43,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f70df196b440444a485fdbc8c870c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds:
+  Sounds:
   - name: Jump
     clip: {fileID: 8300000, guid: 2bc9afcce28fb2f4caab1174b467ff28, type: 3}
-    volume: 0.367
-    pitch: 1.82
-    loop: 0
-    source: {fileID: 0}
-  - name: test
-    clip: {fileID: 8300000, guid: d513e4a56bd16ed43a21e5ebea49f946, type: 3}
-    volume: 0.133
-    pitch: 0.86
-    loop: 0
-    source: {fileID: 0}
-  - name: ButtonHover
-    clip: {fileID: 8300000, guid: 88fd2216ff96af44c939564570d071d8, type: 3}
-    volume: 0.5
-    pitch: 0.86
+    volume: 0.25
+    pitch: 1.8
     loop: 0
     source: {fileID: 0}
   - name: Death
     clip: {fileID: 8300000, guid: 1217445912feede45a426d758292595d, type: 3}
-    volume: 0.5
-    pitch: 1.27
+    volume: 0.59
+    pitch: 1.4
     loop: 0
     source: {fileID: 0}
   - name: Coin
     clip: {fileID: 8300000, guid: f5004e61c7aee5141b40bcade028e144, type: 3}
-    volume: 0.254
-    pitch: 1
+    volume: 0.2
+    pitch: 1.6
     loop: 0
     source: {fileID: 0}
+  - name: ButtonHover
+    clip: {fileID: 8300000, guid: 88fd2216ff96af44c939564570d071d8, type: 3}
+    volume: 1
+    pitch: 1.5
+    loop: 0
+    source: {fileID: 0}
+  Mixer: {fileID: -3251062560395698055, guid: 36f0845b4bfca334da55b272689e2070, type: 2}

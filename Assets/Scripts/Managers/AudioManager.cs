@@ -4,8 +4,9 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-    public Sound[] sounds;
-    
+    public Sound[] Sounds;
+    public AudioMixerGroup Mixer;
+
     public static AudioManager instance;
 
     private void Awake()
@@ -20,7 +21,7 @@ public class AudioManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        foreach (Sound sound in sounds)
+        foreach (Sound sound in Sounds)
         {
             sound.source = gameObject.AddComponent<AudioSource>();
             sound.source.clip = sound.clip;
@@ -28,12 +29,13 @@ public class AudioManager : MonoBehaviour
             sound.source.volume = sound.volume;
             sound.source.pitch = sound.pitch;
             sound.source.loop = sound.loop;
+            sound.source.outputAudioMixerGroup = Mixer;
         }
     }
 
     public void Play(string name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Sound s = Array.Find(Sounds, sound => sound.name == name);
         if (s == null)
         {
             Debug.LogWarning("Sound " + name + " not found!");
