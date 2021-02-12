@@ -1,19 +1,29 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 public class LevelLoader : MonoBehaviour
 {
-    public Animator transition;
+    public Animator Transition;
     public float transitionTime = 1f;
+
+    [SerializeField]
+    private AudioMixer _audioMixer;
+
+
+    private bool _loadStarted = false;
+    private float _startAudioValue;
+
+    private void Start()
+    {
+        _startAudioValue = PlayerPrefs.GetFloat("settingsVolume");
+    }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            LoadNextScene();
-        }
+        SmoothFadeAudio();
     }
 
     public void LoadNextScene()
@@ -32,6 +42,24 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex));
     }
 
+    private void SmoothFadeAudio()
+    {
+        _audioMixer.GetFloat("volume", out float currentVolume);
+        // volume down
+        if (_loadStarted)
+        {
+            _audioMixer.SetFloat("volume", Mathf.Lerp(currentVolume, -60f, 0.01f));
+        }
+        // volume up
+        else
+        {
+            float targetVol = Mathf.Lerp(currentVolume, _startAudioValue, 0.01f);
+
+            if ((targetVol - currentVolume) > 0.001f)
+                _audioMixer.SetFloat("volume", targetVol);    
+        }
+    }
+
     private IEnumerator LoadLevel(int sceneIndex)
     {
         if (sceneIndex < 0) yield break;
@@ -41,13 +69,12 @@ public class LevelLoader : MonoBehaviour
             sceneIndex = 0;
         }
 
-        transition.SetTrigger("Start");
+        Transition.SetTrigger("Start");
+        _loadStarted = true;
 
         yield return new WaitForSeconds(transitionTime);
 
-        
         SceneManager.LoadScene(sceneIndex);
     }
-
     
 }
