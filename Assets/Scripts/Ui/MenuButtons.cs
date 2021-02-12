@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class MenuButtons : MonoBehaviour
 {
-    public void StartGame()
+    public void ShowSettings()
     {
-        //GameManager.instance.play();
-        
+        Debug.Log("Window Settings");
+    }
+
+    public void ShowScoreTable()
+    {
+        Debug.Log("Window Score");
     }
 
     public void Exit()

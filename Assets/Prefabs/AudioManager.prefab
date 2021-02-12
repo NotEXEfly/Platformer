@@ -47,7 +47,7 @@ MonoBehaviour:
   - name: Jump
     clip: {fileID: 8300000, guid: 2bc9afcce28fb2f4caab1174b467ff28, type: 3}
     volume: 0.367
-    pitch: 1.68
+    pitch: 1.82
     loop: 0
     source: {fileID: 0}
   - name: test
@@ -63,8 +63,14 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Death
-    clip: {fileID: 8300000, guid: d513e4a56bd16ed43a21e5ebea49f946, type: 3}
+    clip: {fileID: 8300000, guid: 1217445912feede45a426d758292595d, type: 3}
     volume: 0.5
+    pitch: 1.27
+    loop: 0
+    source: {fileID: 0}
+  - name: Coin
+    clip: {fileID: 8300000, guid: f5004e61c7aee5141b40bcade028e144, type: 3}
+    volume: 0.254
     pitch: 1
     loop: 0
     source: {fileID: 0}

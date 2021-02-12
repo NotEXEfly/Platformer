@@ -2,9 +2,12 @@ using UnityEngine;
 
 public class PlayerCollisions : MonoBehaviour
 {
+    public delegate void CoinsHandler();
+    public static event CoinsHandler OnCoinCollision;
+
     private Player _player;
 
-    private void Start()
+    private void Awake()
     {
         _player = GetComponent<Player>();
     }
@@ -16,10 +19,20 @@ public class PlayerCollisions : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Finish")
+        switch (collision.gameObject.tag)
         {
-            Debug.Log("collision");
-            GameManager.instance.Lose();
+            case "Coin":
+                OnCoinCollision?.Invoke();
+                Destroy(collision.gameObject);
+                break;
+            case "Death":
+                _player.Actions.Freeze();
+                _player.Components.Animator.TryPlayAnimation("Death");
+                AudioManager.instance.Play("Death");
+                GameManager.instance.Lose();
+                break;
+            default:
+                break;
         }
     }
 }

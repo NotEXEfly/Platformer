@@ -12,6 +12,8 @@ public class Actions
     private Player _player;
     private PlayerState _playerMovementState;
 
+    public bool IsFreeze { get; private set; } = false;
+
     public Actions(Player player)
     {
         _player = player;
@@ -42,8 +44,14 @@ public class Actions
 
     public void Attack()
     {
-        AudioManager.instance.Play("test");
+        
         _player.Components.Animator.TryPlayAnimation("Attack");
+    }
+
+    public void Freeze()
+    {
+        IsFreeze = true;
+        _player.Components.RigitBody.velocity = Vector2.zero;
     }
 
     public void CheckMovementState()

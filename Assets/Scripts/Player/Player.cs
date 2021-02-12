@@ -27,12 +27,14 @@ public class Player : MonoBehaviour
             new AnyStateAnimation(RIG.BODY, "Jump"),
             new AnyStateAnimation(RIG.BODY, "Fall"),
             new AnyStateAnimation(RIG.BODY, "Attack"),
+            new AnyStateAnimation(RIG.BODY, "Death"),
         };
         _components.Animator.AddAnimations(animations);
     }
 
     private void Update()
-    {   
+    {
+        if (_actions.IsFreeze) return;
         _utilities.HandleInput();
         _actions.CheckMovementState();
         _actions.PlayMovementAnimations();
@@ -40,6 +42,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_actions.IsFreeze) return;
         _actions.Move();
     }
 }
