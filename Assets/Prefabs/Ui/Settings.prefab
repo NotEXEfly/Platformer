@@ -256,8 +256,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -118.16, y: 0}
-  m_SizeDelta: {x: 236.31, y: 108}
+  m_AnchoredPosition: {x: -126.697495, y: 0}
+  m_SizeDelta: {x: 253.39499, y: 108}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4248490022630501635
 CanvasRenderer:
@@ -300,7 +300,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Fullscreen
+  m_Text: ' Fullscreen'
 --- !u!114 &4248490022630501634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -920,7 +920,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!114 &4248490023268616738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2515,6 +2515,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioMixer: {fileID: 24100000, guid: 36f0845b4bfca334da55b272689e2070, type: 2}
   _resolutionDropdown: {fileID: 4248490022777012559}
+  _qualityDropdown: {fileID: 4248490023648230729}
+  _fullscreenToggle: {fileID: 4248490023268616739}
+  _volumeSlider: {fileID: 4248490024366721316}
 --- !u!1 &4248490024366721318
 GameObject:
   m_ObjectHideFlags: 0

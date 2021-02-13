@@ -56,19 +56,23 @@ public class LevelLoader : MonoBehaviour
 
     private IEnumerator LoadLevel(int sceneIndex)
     {
-        if (sceneIndex < 0) yield break;
-
         if (SceneManager.sceneCountInBuildSettings < sceneIndex + 1)
         {
             sceneIndex = 0;
         }
 
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
         Transition.SetTrigger("Start");
         _loadStarted = true;
 
-        yield return new WaitForSeconds(transitionTime);
+        while (!operation.isDone)
+        {
+            yield return null;
+        }
 
-        SceneManager.LoadScene(sceneIndex);
+        //yield return new WaitForSeconds(transitionTime);
+
+        //SceneManager.LoadScene(sceneIndex);
     }
     
 }

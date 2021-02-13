@@ -31,6 +31,9 @@ public class AudioManager : MonoBehaviour
             sound.source.loop = sound.loop;
             sound.source.outputAudioMixerGroup = Mixer;
         }
+
+        // load volume settings
+        Mixer.audioMixer.SetFloat("volume", PlayerPrefs.GetFloat("settingsVolume"));
     }
 
     public void Play(string name)
