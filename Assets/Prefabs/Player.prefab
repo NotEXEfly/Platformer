@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4426192174893538181}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +71,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: 2eb2ef0f9a3ec9249b9706f0306638a8, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &4426192174893538182
 MonoBehaviour:

@@ -25,12 +25,6 @@ public class PlayerCollisions : MonoBehaviour
             return;
     }
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         switch (collision.gameObject.tag)
@@ -40,9 +34,12 @@ public class PlayerCollisions : MonoBehaviour
                 Destroy(collision.gameObject);
                 break;
             case "Death":
-                _player.Actions.Freeze();
-                _player.Components.Animator.TryPlayAnimation("Death");
-                GameManager.instance.Lose();
+                if (GameManager.instance.GameIsPlay)
+                {
+                    _player.Actions.Freeze();
+                    _player.Components.Animator.TryPlayAnimation("Death");
+                    GameManager.instance.Lose();
+                }
                 break;
             case "Win":
                 _player.Actions.Freeze();

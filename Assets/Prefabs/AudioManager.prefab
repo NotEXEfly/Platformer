@@ -76,7 +76,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Win
     clip: {fileID: 8300000, guid: f70d82a71a3da9d46a7b65c9843dd9c3, type: 3}
-    volume: 0.3
+    volume: 0.1
     pitch: 1.2
     loop: 0
     source: {fileID: 0}

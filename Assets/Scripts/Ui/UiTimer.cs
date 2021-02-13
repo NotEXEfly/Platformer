@@ -1,8 +1,7 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameTimer : MonoBehaviour
+public class UiTimer : MonoBehaviour
 {
     private GameManager _gameManager;
     private Text _text;

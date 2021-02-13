@@ -36,12 +36,7 @@ public class GameManager : MonoBehaviour
     {
         if (GameIsPlay)
         {
-            PlayTimer += Time.deltaTime;
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            Win();
+            instance.PlayTimer += Time.deltaTime;
         }
     }
 
@@ -73,22 +68,12 @@ public class GameManager : MonoBehaviour
 
         FindObjectOfType<UiBoards>().ShowWinBoard(0.5f);
 
-        float bestTime = PlayerPrefs.GetFloat("bestTime");
-
-        if (bestTime != 0)
-        {
-            if (bestTime > instance.PlayTimer)
-            {
-                PlayerPrefs.SetFloat("bestTime", instance.PlayTimer);
-            }
-        }
-        else
-            PlayerPrefs.SetFloat("bestTime", instance.PlayTimer);
+        SaveStats();
     }
 
 
     //--- Buttons---
-    public void Menu()
+    public void Pause()
     {
         instance.GameIsPlay = false;
         FindObjectOfType<UiBoards>().ShowPauseBoard(0);
@@ -123,6 +108,35 @@ public class GameManager : MonoBehaviour
         ClearStats();
         instance.GameIsPlay = false;
         FindObjectOfType<LevelLoader>().LoadNextScene();
+    }
+
+    private void SaveStats()
+    {
+        //Save best time
+        if (PlayerPrefs.HasKey("bestTime"))
+        {
+            if (PlayerPrefs.GetFloat("bestTime") >= instance.PlayTimer)
+            {
+                PlayerPrefs.SetFloat("bestTime", instance.PlayTimer);
+            }
+        }
+        else
+            PlayerPrefs.SetFloat("bestTime", instance.PlayTimer);
+
+        //Save best coins
+        if (PlayerPrefs.HasKey("bestCoins"))
+        {
+            if (PlayerPrefs.GetInt("bestCoins") <= instance.Coins)
+            {
+                PlayerPrefs.SetInt("bestCoins", instance.Coins);
+            }
+        }
+        else
+            PlayerPrefs.SetInt("bestCoins", instance.Coins);
+
+        // Save last time and last coins
+        PlayerPrefs.SetFloat("lastTime", instance.PlayTimer);
+        PlayerPrefs.SetInt("lastCoins", instance.Coins);
     }
 
     private void ClearStats()

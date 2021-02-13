@@ -27,7 +27,6 @@ public class SettingsMenu : MonoBehaviour
 
     public void InitResolutions()
     {
-        Debug.Log("InitResolutions");
         _resolutions = Screen.resolutions;
         _resolutionDropdown.ClearOptions();
 
