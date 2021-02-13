@@ -14,12 +14,6 @@ public class LevelLoader : MonoBehaviour
 
 
     private bool _loadStarted = false;
-    private float _startAudioValue;
-
-    private void Start()
-    {
-        _startAudioValue = PlayerPrefs.GetFloat("settingsVolume");
-    }
 
     private void Update()
     {
@@ -53,7 +47,7 @@ public class LevelLoader : MonoBehaviour
         // volume up
         else
         {
-            float targetVol = Mathf.Lerp(currentVolume, _startAudioValue, 0.01f);
+            float targetVol = Mathf.Lerp(currentVolume, PlayerPrefs.GetFloat("settingsVolume"), 0.01f);
 
             if ((targetVol - currentVolume) > 0.001f)
                 _audioMixer.SetFloat("volume", targetVol);    

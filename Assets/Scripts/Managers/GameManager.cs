@@ -1,21 +1,14 @@
+using System.Collections;
 using UnityEngine;
-
-public enum GameState
-{ 
-    Play,
-    Pause,
-    Waiting,
-    Menu
-}
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public GameState Game { get => _game; }
-    private GameState _game;
+
+    public bool GameIsPlay { get; private set; } = false;
 
     public int Coins { get; private set; } = 0;
-    private float playTimer = 0f;
+    public float PlayTimer { get; private set; } = 0f;
     
     private void Awake()
     {
@@ -41,9 +34,14 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (_game == GameState.Play)
+        if (GameIsPlay)
         {
-            playTimer += Time.deltaTime;
+            PlayTimer += Time.deltaTime;
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Win();
         }
     }
 
@@ -54,50 +52,82 @@ public class GameManager : MonoBehaviour
     }
 
 
-    // Game states
-    public void StartGame()
-    {
-        FindObjectOfType<LevelLoader>().LoadNextScene();
-        _game = GameState.Play;
-
-        
-        // Start timers;
-    }
-
+    // Game states 
     public void Lose()
     {
+        instance.GameIsPlay = false;
         AudioManager.instance.Play("Death");
-        _game = GameState.Pause;
-        
-        // lose screen
+        FindObjectOfType<Theme>().Stop();
+        AudioManager.instance.Play("Loose");
+
+        FindObjectOfType<UiBoards>().ShowLoseBoard(1f);
     }
+
 
     public void Win()
     {
-        _game = GameState.Pause;
+        instance.GameIsPlay = false;
 
-        // win screen
+        FindObjectOfType<Theme>().Stop();
+        AudioManager.instance.Play("Win");
+
+        FindObjectOfType<UiBoards>().ShowWinBoard(0.5f);
+
+        float bestTime = PlayerPrefs.GetFloat("bestTime");
+
+        if (bestTime != 0)
+        {
+            if (bestTime > instance.PlayTimer)
+            {
+                PlayerPrefs.SetFloat("bestTime", instance.PlayTimer);
+            }
+        }
+        else
+            PlayerPrefs.SetFloat("bestTime", instance.PlayTimer);
     }
 
 
-    //--- Buttons in pause---
+    //--- Buttons---
+    public void Menu()
+    {
+        instance.GameIsPlay = false;
+        FindObjectOfType<UiBoards>().ShowPauseBoard(0);
+    }
+
     public void Restart()
     {
-        _game = GameState.Waiting;
+        AudioManager.instance.Stop("Loose");
+
+        ClearStats();
+        instance.GameIsPlay = false;
+
         FindObjectOfType<LevelLoader>().RestartScene();
     }
 
     public void ExitGame()
     {
-        _game = GameState.Menu;
+        AudioManager.instance.Stop("Loose");
+        instance.GameIsPlay = false;
 
         FindObjectOfType<LevelLoader>().LoadMenu();
+    }
+
+    public void Play()
+    {
+        instance.GameIsPlay = true;
     }
 
     // Main menu start button
     public void LoadGame()
     {
+        ClearStats();
+        instance.GameIsPlay = false;
         FindObjectOfType<LevelLoader>().LoadNextScene();
-        _game = GameState.Waiting;
+    }
+
+    private void ClearStats()
+    {
+        instance.PlayTimer = 0;
+        instance.Coins = 0;
     }
 }

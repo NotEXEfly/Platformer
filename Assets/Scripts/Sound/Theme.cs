@@ -13,4 +13,14 @@ public class Theme : MonoBehaviour
     {
         _audioSource.Stop();
     }
+
+    public void Play()
+    {
+        _audioSource.Play();
+    }
+
+    public void Stop()
+    {
+        _audioSource.Stop();
+    }
 }

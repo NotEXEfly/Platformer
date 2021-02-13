@@ -68,4 +68,16 @@ MonoBehaviour:
     pitch: 1.5
     loop: 0
     source: {fileID: 0}
+  - name: Loose
+    clip: {fileID: 8300000, guid: decff02789ab7dc4895db117fb5ffd84, type: 3}
+    volume: 0.4
+    pitch: 1.2
+    loop: 0
+    source: {fileID: 0}
+  - name: Win
+    clip: {fileID: 8300000, guid: f70d82a71a3da9d46a7b65c9843dd9c3, type: 3}
+    volume: 0.3
+    pitch: 1.2
+    loop: 0
+    source: {fileID: 0}
   Mixer: {fileID: -3251062560395698055, guid: 36f0845b4bfca334da55b272689e2070, type: 2}

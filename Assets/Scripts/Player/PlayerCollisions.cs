@@ -12,6 +12,20 @@ public class PlayerCollisions : MonoBehaviour
         _player = GetComponent<Player>();
     }
 
+    private void Update()
+    {
+        if (!GameManager.instance.GameIsPlay)
+        {
+            if (Mathf.Abs(_player.Components.RigitBody.velocity.x) > 0.2f)
+            {
+                GameManager.instance.Play();
+            }
+        }
+        else
+            return;
+    }
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
@@ -28,8 +42,12 @@ public class PlayerCollisions : MonoBehaviour
             case "Death":
                 _player.Actions.Freeze();
                 _player.Components.Animator.TryPlayAnimation("Death");
-                AudioManager.instance.Play("Death");
                 GameManager.instance.Lose();
+                break;
+            case "Win":
+                _player.Actions.Freeze();
+                //_player.Components.RigitBody.simulated = false;
+                GameManager.instance.Win();
                 break;
             default:
                 break;
