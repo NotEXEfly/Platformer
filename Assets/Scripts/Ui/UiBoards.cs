@@ -12,20 +12,9 @@ public class UiBoards : MonoBehaviour
     [SerializeField]
     private GameObject _pauseBoard;
 
-    public void ShowLoseBoard(float delay)
-    {
-        StartCoroutine(LoseBoard(delay));
-    }
-
-    public void ShowWinBoard(float delay)
-    {
-        StartCoroutine(WinBoard(delay));
-    }
-
-    public void ShowPauseBoard(float delay)
-    {
-        StartCoroutine(PauseBoard(delay));
-    }
+    public void ShowLoseBoard(float delay) => StartCoroutine(LoseBoard(delay));
+    public void ShowWinBoard(float delay) => StartCoroutine(WinBoard(delay));
+    public void ShowPauseBoard(float delay) => StartCoroutine(PauseBoard(delay));
 
     private IEnumerator LoseBoard(float delay)
     {

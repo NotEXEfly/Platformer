@@ -3988,38 +3988,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 71611960}
     m_Modifications:
-    - target: {fileID: 4248490022777012556, guid: 5090a747adb45474c84119f54452b274, type: 3}
-      propertyPath: UpSizeOnHover
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248490022936253799, guid: 5090a747adb45474c84119f54452b274, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248490022936253799, guid: 5090a747adb45474c84119f54452b274, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248490023648230726, guid: 5090a747adb45474c84119f54452b274, type: 3}
-      propertyPath: UpSizeOnHover
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4248490024124818403, guid: 5090a747adb45474c84119f54452b274, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1645046091}
-    - target: {fileID: 4248490024260115066, guid: 5090a747adb45474c84119f54452b274, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248490024260115066, guid: 5090a747adb45474c84119f54452b274, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248490024260115066, guid: 5090a747adb45474c84119f54452b274, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4248490024363208679, guid: 5090a747adb45474c84119f54452b274, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4107,10 +4079,6 @@ PrefabInstance:
     - target: {fileID: 4248490024363208680, guid: 5090a747adb45474c84119f54452b274, type: 3}
       propertyPath: m_Name
       value: Settings
-      objectReference: {fileID: 0}
-    - target: {fileID: 4248490024363208680, guid: 5090a747adb45474c84119f54452b274, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5090a747adb45474c84119f54452b274, type: 3}

@@ -9,10 +9,6 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     private Transform _transform;
 
-    //public Texture2D cursorTexture;
-    //public CursorMode cursorMode = CursorMode.ForceSoftware;
-    //public Vector2 hotSpot = Vector2.zero;
-
     void Start()
     {
         _transform = GetComponent<Transform>();
@@ -28,8 +24,9 @@ public class ButtonEffects : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         if(UpSizeOnHover)
             _transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+
         if(PlaySoundOnHover)
-        AudioManager.instance.Play("ButtonHover");
+            AudioManager.instance.Play("ButtonHover");
     }
 
     public void OnPointerExit(PointerEventData eventData)

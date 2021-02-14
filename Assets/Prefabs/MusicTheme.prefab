@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 295413884861568327}
   - component: {fileID: 295413884861568326}
   - component: {fileID: 295413884861568324}
+  - component: {fileID: 6408732599330554311}
   m_Layer: 0
   m_Name: MusicTheme
   m_TagString: Untagged
@@ -140,3 +141,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c370f1440b01fc449e71ac931f3e0d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &6408732599330554311
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295413884861568325}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: af7edbd03adff574aa4c9a7ed1c8890b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

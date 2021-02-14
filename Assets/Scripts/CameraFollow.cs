@@ -4,14 +4,14 @@ public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private Transform _traget;
 
-    void LateUpdate()
+    private void LateUpdate()
     {
-        float x = _traget.position.x; //Mathf.Lerp(transform.position.x, _traget.position.x, 0.01f);
-        float y = _traget.position.y;
+        float posX = _traget.position.x; 
+        float posY = _traget.position.y;
 
-        if (_traget.position.y < 0) 
-            y = 0;
+        if (_traget.position.y < 0)
+            posY = 0;
 
-        transform.position = new Vector3(x, y, transform.position.z);
+        transform.position = new Vector3(posX, posY, transform.position.z);
     }
 }

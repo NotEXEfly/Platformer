@@ -255,3 +255,4 @@ MonoBehaviour:
   Transition: {fileID: 942297544210485799}
   transitionTime: 1
   _audioMixer: {fileID: 24100000, guid: 36f0845b4bfca334da55b272689e2070, type: 2}
+  _musicThemeAnimator: {fileID: 6408732599330554311, guid: 45d13c8c0d2d1084690cc013e18785ce, type: 3}

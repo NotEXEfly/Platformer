@@ -11,15 +11,10 @@ public class UiCoins : MonoBehaviour
         _text = GetComponent<Text>();
     }
 
-    private void OnEnable()
-    {
-        PlayerCollisions.OnCoinCollision += UpdateCoinsCount;
-    }
+    private void OnEnable() => PlayerCollisions.OnCoinCollision += UpdateCoinsCount;
 
-    private void OnDisable()
-    {
-        PlayerCollisions.OnCoinCollision -= UpdateCoinsCount;
-    }
+    private void OnDisable() => PlayerCollisions.OnCoinCollision -= UpdateCoinsCount;
+
 
     private void UpdateCoinsCount()
     {

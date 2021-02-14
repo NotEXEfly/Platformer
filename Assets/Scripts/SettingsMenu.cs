@@ -25,30 +25,6 @@ public class SettingsMenu : MonoBehaviour
         LoadSettings();
     }
 
-    public void InitResolutions()
-    {
-        _resolutions = Screen.resolutions;
-        _resolutionDropdown.ClearOptions();
-
-        List<string> options = new List<string>();
-
-        for (int i = 0; i < _resolutions.Length; i++)
-        {
-            string option = _resolutions[i].width + " x " + _resolutions[i].height;
-          
-            options.Add(option);
-
-            if (_resolutions[i].height == Screen.currentResolution.height &&
-                _resolutions[i].width == Screen.currentResolution.width)
-            {
-                _currentResolutionIndex = i;
-            }
-        }
-
-        _resolutionDropdown.AddOptions(options);
-        _resolutionDropdown.RefreshShownValue();
-    }
-
     public void SetResolution(int resIndex)
     {
         Resolution resolution = _resolutions[resIndex];
@@ -65,13 +41,38 @@ public class SettingsMenu : MonoBehaviour
     public void SetVolume(float volume)
     {
         PlayerPrefs.SetFloat("settingsVolume", volume);
-        _audioMixer.SetFloat("volume", volume);
+        _audioMixer.SetFloat("volume", Mathf.Log10(volume) * 20);
     }
 
     public void SetFullscreen(bool isFullScreen)
     {
         Screen.fullScreen = isFullScreen;
     }
+
+    private void InitResolutions()
+    {
+        _resolutions = Screen.resolutions;
+        _resolutionDropdown.ClearOptions();
+
+        List<string> options = new List<string>();
+
+        for (int i = 0; i < _resolutions.Length; i++)
+        {
+            string option = $"{_resolutions[i].width} x {_resolutions[i].height} ({_resolutions[i].refreshRate})";
+          
+            options.Add(option);
+
+            if (_resolutions[i].height == Screen.currentResolution.height &&
+                _resolutions[i].width == Screen.currentResolution.width)
+            {
+                _currentResolutionIndex = i;
+            }
+        }
+
+        _resolutionDropdown.AddOptions(options);
+        _resolutionDropdown.RefreshShownValue();
+    }
+
 
     private void LoadSettings()
     {

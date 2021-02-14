@@ -36,7 +36,6 @@ public class PlayerCollisions : MonoBehaviour
                 if (GameManager.instance.GameIsPlay)
                 {
                     _player.Actions.Freeze(true);
-                    Debug.Log(_player.Actions.IsFreeze);
                     _player.Components.Animator.TryPlayAnimation("Death");
                     GameManager.instance.Lose();
                 }

@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public enum PlayerState
 {
     OnGround,
@@ -19,13 +18,19 @@ public class Actions
         _player = player;
     }
 
+    public void Freeze(bool value)
+    {
+        IsFreeze = true;
+        _player.Components.RigitBody.velocity = Vector2.zero;
+    }
+
     public void Move()
     {
         _player.Components.RigitBody.velocity = new Vector2(_player.Stats.Direction.x * _player.Stats.RunSpeed * Time.deltaTime, _player.Components.RigitBody.velocity.y);
 
         if (_player.Stats.Direction.x != 0)
         {
-            //flip
+            //flip sprite
             _player.transform.localScale = new Vector2(_player.Stats.Direction.x < 0 ? -1 : 1, 1);
         }
     }
@@ -46,12 +51,6 @@ public class Actions
     {
 
         _player.Components.Animator.TryPlayAnimation("Attack");
-    }
-
-    public void Freeze(bool value)
-    {
-        IsFreeze = true;
-        _player.Components.RigitBody.velocity = Vector2.zero;
     }
 
     public void CheckMovementState()
