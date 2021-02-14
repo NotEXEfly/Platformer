@@ -44,11 +44,11 @@ public class Actions
 
     public void Attack()
     {
-        
+
         _player.Components.Animator.TryPlayAnimation("Attack");
     }
 
-    public void Freeze()
+    public void Freeze(bool value)
     {
         IsFreeze = true;
         _player.Components.RigitBody.velocity = Vector2.zero;

@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public bool GameIsPlay { get; private set; } = false;
+    public bool PauseIsOpen { get; set; } = false;
 
     public int Coins { get; private set; } = 0;
     public float PlayTimer { get; private set; } = 0f;
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (GameIsPlay)
+        if (GameIsPlay && !PauseIsOpen)
         {
             instance.PlayTimer += Time.deltaTime;
         }

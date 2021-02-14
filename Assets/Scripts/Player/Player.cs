@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         if (_actions.IsFreeze) return;
+        
         _utilities.HandleInput();
         _actions.CheckMovementState();
         _actions.PlayMovementAnimations();
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         if (_actions.IsFreeze) return;
+
         _actions.Move();
     }
 }

@@ -12,8 +12,8 @@ public class BoardStats : MonoBehaviour
 
     private void OnEnable()
     {
-        _coins.text = "Coins: " + GameManager.instance.Coins;
-        _currentTime.text = "Time: " + GameManager.instance.PlayTimer.ToString("F2");
-        _bestTime.text = "Best time: " + PlayerPrefs.GetFloat("bestTime").ToString("F2");
+        _coins.text = GameManager.instance.Coins.ToString();
+        _currentTime.text = GameManager.instance.PlayTimer.ToString("F2"); 
+        _bestTime.text = PlayerPrefs.GetFloat("bestTime").ToString("F2");
     }
 }

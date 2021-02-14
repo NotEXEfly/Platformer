@@ -14,15 +14,14 @@ public class PlayerCollisions : MonoBehaviour
 
     private void Update()
     {
-        if (!GameManager.instance.GameIsPlay)
+        
+        if (!GameManager.instance.GameIsPlay && !_player.Actions.IsFreeze)
         {
             if (Mathf.Abs(_player.Components.RigitBody.velocity.x) > 0.2f)
             {
                 GameManager.instance.Play();
             }
         }
-        else
-            return;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,14 +35,14 @@ public class PlayerCollisions : MonoBehaviour
             case "Death":
                 if (GameManager.instance.GameIsPlay)
                 {
-                    _player.Actions.Freeze();
+                    _player.Actions.Freeze(true);
+                    Debug.Log(_player.Actions.IsFreeze);
                     _player.Components.Animator.TryPlayAnimation("Death");
                     GameManager.instance.Lose();
                 }
                 break;
             case "Win":
-                _player.Actions.Freeze();
-                //_player.Components.RigitBody.simulated = false;
+                _player.Actions.Freeze(true);
                 GameManager.instance.Win();
                 break;
             default:
