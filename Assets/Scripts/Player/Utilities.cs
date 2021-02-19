@@ -17,7 +17,7 @@ public class Utilities
 
     public void HandleInput()
     {
-#if !UNITY_ANDROID
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN
         _player.Stats.Direction = new Vector2(Input.GetAxisRaw("Horizontal"), _player.Components.RigitBody.velocity.y);
 #endif
 

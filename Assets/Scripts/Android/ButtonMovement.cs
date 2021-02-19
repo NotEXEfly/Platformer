@@ -10,7 +10,7 @@ public class ButtonMovement : MonoBehaviour
     {
         _player = GetComponent<Player>();
     }
-#if UNITY_ANDROID
+#if UNITY_ANDROID && !UNITY_EDITOR
     private void Update()
     {
         _player.Stats.Direction = new Vector2(_directionX, _player.Components.RigitBody.velocity.y);
