@@ -17,7 +17,10 @@ public class Utilities
 
     public void HandleInput()
     {
+#if !UNITY_ANDROID
         _player.Stats.Direction = new Vector2(Input.GetAxisRaw("Horizontal"), _player.Components.RigitBody.velocity.y);
+#endif
+
 
         foreach (Command command in _commands)
         {

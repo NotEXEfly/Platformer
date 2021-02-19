@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class DisableObject : MonoBehaviour
 {
-    public GameObject TargetObject;
+    public GameObject[] TargetObject;
 
     private void OnEnable()
     {
-        TargetObject.SetActive(false);
+        foreach (var obj in TargetObject)
+        {
+            obj.SetActive(false);
+        }
     }
 }

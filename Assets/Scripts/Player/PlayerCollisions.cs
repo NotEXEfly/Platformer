@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class PlayerCollisions : MonoBehaviour
 {
     public delegate void CoinsHandler();
